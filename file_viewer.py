@@ -20,8 +20,12 @@ root.geometry("438x5573+460+40")
 map_frame = Frame(root)
 map_frame.pack(side=BOTTOM, fill=BOTH, expand=1)
 
+global gdf
+gdf=None 
 
 def import_file():
+    #define global gdf
+    global gdf
     #make open file function 
     file_path = filedialog.askopenfilename()
     #create geodataframe
@@ -41,15 +45,19 @@ def import_file():
 
     
 def unload():
-    del gdf 
+    global gdf
+    if gdf is not None:
+        del gdf
+    
 
 
 def export_file():
+    global gdf
     file_path = filedialog.asksaveasfilename(defaultextension=".shp")
     # do something to create the geodataframe to export
     gdf.to_file(file_path)
 
-button1 = Button(root, text="Import", command=import_file)
+button1 = Button(root, text="Import",  width=10, height=3, font=("Helvetica", 12), bg="lightblue", command=import_file)
 button1.pack()
 
 button2 = Button(root, text="Export", command=export_file)
@@ -59,8 +67,6 @@ button3 = Button(root, text="Unload", command=unload)
 button3.pack()
 
 root.mainloop()
-#In this example, the import_file() function opens a file dialog box using the filedialog.askopenfilename() function, which allows the user to select a file. The function then reads in the selected file using geopandas and assigns the resulting geodataframe to the variable gdf. The export_file() function does something similar, but instead uses the filedialog.asksaveasfilename() function to allow the user to select a file to save the exported geodataframe to. Finally, both functions are assigned to their respective buttons using the command option.
-
 
 
 
