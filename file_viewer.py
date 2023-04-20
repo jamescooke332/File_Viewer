@@ -59,10 +59,6 @@ button3 = Button(root, text="Unload", command=unload)
 button3.pack()
 
 root.mainloop()
-#In this example, the import_file() function opens a file dialog box using the filedialog.askopenfilename() function, which allows the user to select a file. The function then reads in the selected file using geopandas and assigns the resulting geodataframe to the variable gdf. The export_file() function does something similar, but instead uses the filedialog.asksaveasfilename() function to allow the user to select a file to save the exported geodataframe to. Finally, both functions are assigned to their respective buttons using the command option.
-
-
-
 
 
 
